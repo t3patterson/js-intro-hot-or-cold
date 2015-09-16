@@ -4,10 +4,11 @@ $cold-base: #2980b9;
 $font-faded: #95a5a6;
 $font-prompt: #166135;
 $font-guess: #16a085;
-$guess-button: #2ecc71;
+$guess-button: #9b59b6;
 $guess-ctr-color: #f1c40f;
 $guess-hist-color: #9b59b6;
 $output-box: #ccc;
+$output-victory: #86FFB9;
 
 $to_left: left;
 $to_right: right;
@@ -24,10 +25,44 @@ $to_right: right;
   margin: 0 auto;
 }
 
+* {
+  box-sizing: border-box
+}
+
 body{
   background: $font-default;
   font-family: 'Helvetica Neue';
   color: $font-default;
+  margin: 0;
+}
+
+.home-page{
+  font-size: 0;
+  text-align: center;
+  > * {
+    font-size: medium;
+  }
+  h1{
+    font-size: 2rem;
+    color: #fff;
+    font-weight: 100;
+  }
+  > a{
+    display: inline-block;
+    vertical-align: top;
+    width: 30%;
+    background: gray;
+    text-align: center;
+    margin: 1.0%;
+    text-decoration: none;
+    font-size: 1.3333rem;
+    height: 140px;
+    color: #fff;
+    padding: 2.5rem;
+     &:hover{
+      background: $hot-base;
+     }
+  }
 }
 
 .hot-font{ color: $hot-base;}
@@ -40,117 +75,127 @@ body{
   margin: auto;
   border-radius: 10px;
   padding-bottom: 1rem;
-}
 
-h1 {
-  color: $font-faded;
-  text-align: center;
-  padding: .75rem;
-  background: #fff;
-  border-radius: 10px 10px 0 0;
-  span{
-    display: inline-block;
-    &.grad-hot{ 
-      @mixin gradient_font $hot-base, $to_left {}
-    }
-
-    &.grad-cold{ 
-      @mixin gradient_font $cold-base, $to_right {}
-      }
-  }
-}
-
-main{
-  padding: 0 1rem;
-  
-  h5,h3{
-    font-weight: 300;
-  }
-  
-  .guess-prompt{
-    color: $font-prompt;
-  }
-
-  .user-guess{
-    @mixin center-block{};
-    padding: .5rem;
-    width: 70px;
+  h1 {
+    color: $font-faded;
     text-align: center;
-    font-size: 1.3333rem;
-    color: $font-guess;
-    &:focus{
-      outline: 0px;
+    padding: .75rem;
+    background: #fff;
+    border-radius: 10px 10px 0 0;
+    span{
+      display: inline-block;
+      &.grad-hot{ 
+        @mixin gradient_font $hot-base, $to_left {}
+      }
+
+      &.grad-cold{ 
+        @mixin gradient_font $cold-base, $to_right {}
+        }
     }
   }
 
-  button.guess-button {
-    @mixin center-block{};
-    padding: .5rem;
-    font-size: 1.0rem;
-    margin-top: .5rem;
-    background: $guess-button;
-    border-radius: 10px;
-    border: 1px solid $font-faded;
-    color: #fff;
-
-
-    &:hover{
-      cursor: pointer;
-    }
-
-    &:focus{
-      outline: 0;
-    }
-  }
-
-  .output{
-    background: $output-box;
-    padding: 2rem;
-    border-radius: 10px;
-  }
-  
-  .guess-info{
-    margin-top: 1rem;
-     > *{
-      width: 49%;
-      display:inline-block; 
-      margin: 0 auto;
-      vertical-align: top;
+  main{
+    padding: 0 1rem;
+    
+    h5,h3{
+      font-weight: 300;
     }
     
-    h4{
-      padding-bottom: 1.0rem;
+    .guess-prompt{
+      color: $font-prompt;
     }
-  }
 
-  .tally{
-    text-align: center;
-    > *{
-      margin: 0 auto;
-      display: block;
-    }
-    .guess-count{
-      background: $guess-ctr-color;
-      font-size: 1.333rem;
-      width: 50px;
-      line-height: 50px;
-    }
-  }
-
-  .history{
-    >*{margin:0;text-align: center;}
-    ul {
-      margin: 0;
-      padding: 0;
-      font-size: 0;
-      li {
-        font-size: medium;
-        margin: 3px;
-        display: inline-block;
-        padding: 5px;
-        background: $guess-hist-color;
-        color: #333;
+    .user-guess{
+      @mixin center-block{};
+      padding: .5rem;
+      width: 70px;
+      text-align: center;
+      font-size: 1.3333rem;
+      color: $font-guess;
+      &:focus{
+        outline: 0px;
       }
-    }  
-   }
-}  
+    }
+
+    button.guess-button {
+      @mixin center-block{};
+      padding: .5rem;
+      font-size: 1.0rem;
+      margin-top: .5rem;
+      background: $guess-button;
+      border-radius: 10px;
+      border: 1px solid $font-faded;
+      color: #fff;
+
+
+      &:hover{
+        cursor: pointer;
+      }
+
+      &:focus{
+        outline: 0;
+      }
+
+      &.success{
+         background: $font-guess;
+      }
+    }
+
+    .output{
+      background: $output-box;
+      padding: 2rem;
+      border-radius: 10px;
+      font-weight: 500;
+      font-size: 1.3333rem;
+      &.victory{
+        background: $output-victory;
+
+      }
+    }
+    
+    .guess-info{
+      margin-top: 1rem;
+       > *{
+        width: 49%;
+        display:inline-block; 
+        margin: 0 auto;
+        vertical-align: top;
+      }
+      
+      h4{
+        padding-bottom: 1.0rem;
+      }
+    }
+
+    .tally{
+      text-align: center;
+      > *{
+        margin: 0 auto;
+        display: block;
+      }
+      .guess-count{
+        background: $guess-ctr-color;
+        font-size: 1.333rem;
+        width: 50px;
+        line-height: 50px;
+      }
+    }
+
+    .history{
+      >*{margin:0;text-align: center;}
+      ul {
+        margin: 0;
+        padding: 0;
+        font-size: 0;
+        li {
+          font-size: medium;
+          margin: 3px;
+          display: inline-block;
+          padding: 5px;
+          background: $guess-hist-color;
+          color: #ededed;
+        }
+      }  
+     }
+  }  
+}

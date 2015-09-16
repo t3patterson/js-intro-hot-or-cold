@@ -7,7 +7,7 @@ var guess_counter = 0;
 var guess_history = []
 
 var response = {
-	match: "Yeeyyyy! You guessed the number!!",
+	match: "Yeeyyyy! <br> You guessed the number!!",
 	hotter: "Getting Warmer",
 	colder: "Getting Colder",
 	duplicate_guess: "You've already guessed that!",
@@ -27,13 +27,13 @@ btn.addEventListener("click", function(evt) {
   var user_guess_number = parseInt(user_guess)
 
   var output_box = document.querySelector('.output')
-
+  
   if ( isNaN(user_guess_number) ) { 
   	output_box.innerHTML = response['invalid_number']
   	return null
   }
 
-  if ( user_guess_number > max_num){
+  if ( user_guess_number > max_num ){
   	output_box.innerHTML = response['too_big']
   	return null
   }
@@ -42,8 +42,6 @@ btn.addEventListener("click", function(evt) {
   	output_box.innerHTML = response['duplicate_guess']
   	return null
   }
-
-  
 
   //-----------------------------
   // DATA MANIPULATION
@@ -61,11 +59,13 @@ btn.addEventListener("click", function(evt) {
   var current_difference =  Math.abs(super_secret_number - user_guess_number)
 
 
-
+  var guess_is_match = false
   var output_msg = ""
+
   //Evaluate Hot/Cold
   if(super_secret_number === user_guess_number){
     output_msg = response['match']
+    guess_is_match = true
 
   } else if (previous_difference === 0) {
 
@@ -89,6 +89,12 @@ btn.addEventListener("click", function(evt) {
   //1) Feedback Output
   //---------------------------
   output_box.innerHTML = output_msg
+  if (guess_is_match) { 
+  	output_box.className += " victory"
+  	btn.disabled = true;
+  	btn.innerHTML = "Success!"
+    btn.className += " success"
+  }
 
 
   //2) 
@@ -98,7 +104,6 @@ btn.addEventListener("click", function(evt) {
 
   var ul_element = document.querySelector('ul')
   ul_element.appendChild(li_element)
-
 
 
   console.log('GuessCounter')
