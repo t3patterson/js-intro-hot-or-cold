@@ -1,7 +1,7 @@
 
 var btn = document.querySelector('.guess-button')
 
-val Math.random()*100+1
+hidden_number=  Math.floor(Math.random()*100+1)
 
 btn.addEventListener("click", function(evt){
   var userInput = document.querySelector('input').value
