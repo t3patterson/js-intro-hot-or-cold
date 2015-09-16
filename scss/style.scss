@@ -7,6 +7,7 @@ $font-guess: #16a085;
 $guess-button: #2ecc71;
 $guess-ctr-color: #f1c40f;
 $guess-hist-color: #9b59b6;
+$output-box: #ccc;
 
 $to_left: left;
 $to_right: right;
@@ -102,6 +103,12 @@ main{
     }
   }
 
+  .output{
+    background: $output-box;
+    padding: 2rem;
+    border-radius: 10px;
+  }
+  
   .guess-info{
     margin-top: 1rem;
      > *{
