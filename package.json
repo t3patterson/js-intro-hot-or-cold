@@ -9,7 +9,7 @@
         "watch:js-min": "watchify ./js/app-browserify.js -t [ babelify --optional runtime --stage 1 ] -t uglifyify -o ./dist/app-browserify.js -d",
         "watch": "npm run watch:css & npm run watch:js-min;",
         "server": "nodemon --watch . --ext js,jsx heroku-server.js & npm run watch",
-        "start": "npm run n",
+        "start": "npm run n & npm run server",
         "s": "npm run start & npm run watch",
         "n": "node  --use_strict --harmony --es_staging ",
         "preinstall": "npm install --ignore-scripts",

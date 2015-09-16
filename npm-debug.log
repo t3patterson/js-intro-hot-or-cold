@@ -1,24 +1,24 @@
 0 info it worked if it ends with ok
-1 verbose cli [ 'node', '/usr/local/bin/npm', 'run', 'start' ]
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'run', 'build:css' ]
 2 info using npm@1.4.28
 3 info using node@v0.10.32
-4 verbose run-script [ 'prestart', 'start', 'poststart' ]
-5 info prestart @
-6 info start @
+4 verbose run-script [ 'prebuild:css', 'build:css', 'postbuild:css' ]
+5 info prebuild:css @
+6 info build:css @
 7 verbose unsafe-perm in lifecycle true
-8 info @ Failed to exec start script
-9 error @ start: `npm run n & node heroku-server.js`
-9 error Exit status 8
-10 error Failed at the @ start script.
+8 info @ Failed to exec build:css script
+9 error @ build:css: `postcss --use postcss-import --use postcss-mixins --use postcss-simple-vars --use postcss-calc --use postcss-nested --use postcss-conditionals --use postcss-for --use postcss-each --use postcss-simple-extend --use autoprefixer --use csswring -o ./dist/style.css scss/style.scss;`
+9 error Exit status 1
+10 error Failed at the @ build:css script.
 10 error This is most likely a problem with the  package,
 10 error not with npm itself.
 10 error Tell the author that this fails on your system:
-10 error     npm run n & node heroku-server.js
+10 error     postcss --use postcss-import --use postcss-mixins --use postcss-simple-vars --use postcss-calc --use postcss-nested --use postcss-conditionals --use postcss-for --use postcss-each --use postcss-simple-extend --use autoprefixer --use csswring -o ./dist/style.css scss/style.scss;
 10 error You can get their info via:
 10 error     npm owner ls
 10 error There is likely additional logging output above.
 11 error System Darwin 14.4.0
-12 error command "node" "/usr/local/bin/npm" "run" "start"
+12 error command "node" "/usr/local/bin/npm" "run" "build:css"
 13 error cwd /Users/travish/GithubProjects/Tuts-HotOrCold
 14 error node -v v0.10.32
 15 error npm -v 1.4.28
